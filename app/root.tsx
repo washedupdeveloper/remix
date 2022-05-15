@@ -3,6 +3,7 @@ import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { useState } from 'react';
+import { NavigationBar } from './components/navigationBar';
 import tailwind from './tailwind.css';
 
 export const meta: MetaFunction = () => ({
@@ -26,6 +27,13 @@ export default function App() {
       <body>
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
           <MantineProvider theme={{ colorScheme }} withNormalizeCSS withGlobalStyles>
+            <NavigationBar
+              links={[
+                { label: 'home', path: '/' },
+                { label: 'drinks', path: 'drinks' },
+                { label: 'about', path: 'about' },
+              ]}
+            />
             <Outlet />
           </MantineProvider>
         </ColorSchemeProvider>
